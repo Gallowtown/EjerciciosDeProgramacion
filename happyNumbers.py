@@ -35,25 +35,34 @@
 # Pista: Recuerda, los números, al igual que las personas, pueden ser felices o infelices.
 
 def happy_number(num) :
-    confirm = num
+    num = str(num)
+    confirm = []
     counter = 0
     happyNums = 0
-    for counter in range(len(num)) :
+    while True :
+      for counter in range(len(num)) :
        aux = int(num[counter])
        happyNums += aux**2
-       counter += 1 
-    if confirm == happyNums :
-        print('bucle')
-    else:
-        happy_number(num)
-    
-
+       print( counter, happyNums, num )
+      counter = 0       
+      if happyNums in confirm :
+          print('bucle')
+          print('No es un numero happy')
+          return False
+      elif happyNums == 1 :
+          print('Es un numero happy')
+          return True
+      confirm.append(happyNums)
+      num = str(happyNums)  
+      happyNums = 0
+      print('happynums : ',happyNums)
+      
 if __name__ == "__main__":
     num = input('Es esto un happyNumber : ')
 
     if num.isdigit() :
         happy_number(num)
     else : 
-        print('no es numero')
+        print('no es un numero entero')
 
     
